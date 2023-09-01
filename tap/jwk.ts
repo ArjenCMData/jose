@@ -20,7 +20,9 @@ export default (QUnit: QUnit, lib: typeof jose) => {
     ],
     ['ECDH-ES', KEYS.X448.jwk, env.isNode || env.isEdgeRuntime],
     ['EdDSA', KEYS.Ed25519.jwk, !env.isBrowser],
+    ['Ed25519', KEYS.Ed25519.jwk, !env.isBrowser],
     ['EdDSA', KEYS.Ed448.jwk, env.isNode || env.isEdgeRuntime],
+    ['Ed448', KEYS.Ed448.jwk, env.isNode || env.isEdgeRuntime],
     ['ES256', KEYS.P256.jwk, true],
     ['ES256K', KEYS.secp256k1.jwk, env.isNodeCrypto],
     ['ES384', KEYS.P384.jwk, true],
@@ -53,7 +55,7 @@ export default (QUnit: QUnit, lib: typeof jose) => {
       result = '[not supported] '
     }
     result += `${alg} `
-    if (alg === 'EdDSA' || alg === 'ECDH-ES') {
+    if (alg === 'EdDSA' || alg === 'Ed25519' || alg === 'Ed448' || alg === 'ECDH-ES') {
       result += `${jwk.crv} `
     }
     result += jwk.d ? 'Private' : 'Public'

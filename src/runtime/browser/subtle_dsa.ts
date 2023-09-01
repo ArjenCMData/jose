@@ -20,6 +20,9 @@ export default function subtleDsa(alg: string, algorithm: KeyAlgorithm | EcKeyAl
     case 'ES384':
     case 'ES512':
       return { hash, name: 'ECDSA', namedCurve: (<EcKeyAlgorithm>algorithm).namedCurve }
+    case 'Ed25519':
+    case 'Ed448':
+      return { name: alg }
     case 'EdDSA':
       return { name: algorithm.name }
     default:

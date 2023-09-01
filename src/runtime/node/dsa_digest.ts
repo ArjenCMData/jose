@@ -18,6 +18,8 @@ export default function dsaDigest(alg: string) {
     case 'ES512':
       return 'sha512'
 
+    case 'Ed25519':
+    case 'Ed448':
     case 'EdDSA':
       return undefined
 

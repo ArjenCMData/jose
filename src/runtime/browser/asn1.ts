@@ -134,6 +134,11 @@ const genericImport = async (
       keyUsages = isPublic ? [] : ['deriveBits']
       break
     }
+    case 'Ed25519':
+    case 'Ed448':
+      algorithm = { name: alg }
+      keyUsages = isPublic ? ['verify'] : ['sign']
+      break
     case 'EdDSA':
       algorithm = { name: getNamedCurve(keyData) }
       keyUsages = isPublic ? ['verify'] : ['sign']

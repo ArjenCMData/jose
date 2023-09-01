@@ -33,7 +33,7 @@ export default (QUnit: QUnit, lib: typeof jose) => {
       if (vector.input.alg === 'ES512') {
         return !env.isDeno
       }
-      if (vector.input.alg === 'EdDSA') {
+      if (['EdDSA', 'Ed25519', 'Ed448'].includes(vector.input.alg)) {
         return !env.isBrowser
       }
       return true

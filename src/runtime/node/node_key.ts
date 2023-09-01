@@ -20,6 +20,16 @@ const ecCurveAlgMap = new Map([
 
 export default function keyForCrypto(alg: string, key: KeyObject): KeyObject | SignKeyObjectInput {
   switch (alg) {
+    case 'Ed25519':
+    case 'Ed448':
+      if (key.asymmetricKeyType !== alg.toLowerCase()) {
+        throw new TypeError(
+          `Invalid key for this operation, its asymmetricKeyType must be ${alg.toLowerCase()}`,
+        )
+      }
+
+      return key
+
     case 'EdDSA':
       if (!['ed25519', 'ed448'].includes(key.asymmetricKeyType!)) {
         throw new TypeError(

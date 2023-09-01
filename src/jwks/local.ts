@@ -100,12 +100,7 @@ export class LocalJWKSet<T extends KeyLike = KeyLike> {
         candidate = jwk.key_ops.includes('verify')
       }
 
-      // filter out non-applicable OKP Sub Types
-      if (candidate && alg === 'EdDSA') {
-        candidate = jwk.crv === 'Ed25519' || jwk.crv === 'Ed448'
-      }
-
-      // filter out non-applicable EC curves
+      // filter out non-applicable curves / sub types
       if (candidate) {
         switch (alg) {
           case 'ES256':
@@ -119,6 +114,13 @@ export class LocalJWKSet<T extends KeyLike = KeyLike> {
             break
           case 'ES512':
             candidate = jwk.crv === 'P-521'
+            break
+          case 'Ed25519':
+          case 'Ed448':
+            candidate = jwk.crv === alg
+            break
+          case 'EdDSA':
+            candidate = jwk.crv === 'Ed25519' || jwk.crv === 'Ed448'
             break
         }
       }
