@@ -19,6 +19,7 @@
     "./random.js": "./random.ts",
     "./rsaes.js": "./rsaes.ts",
     "./run.js": "./run.ts",
+    "./test-hpke.js": "./test-hpke.ts",
     "./sign.js": "./sign.ts"
   }
 }
