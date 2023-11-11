@@ -23,7 +23,6 @@ export default (QUnit: QUnit, lib: typeof jose) => {
     const publicJwk = {
       crv: 'X25519',
       alg: 'THIS CAN BE ANYTHING',
-      d: 'WCN6m3ZhxgzgsmacDlbq_O347na7uQe6cW8T6ZJ19mw',
       kty: 'OKP',
       x: 'aq1ZuCRIE3XXXcRpbC_txuESJ4KFH8VwQlz1nVa8Ugk',
     }
